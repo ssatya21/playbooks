@@ -1,0 +1,20 @@
+#  ansible all -m yum -a "name=git state=present" -b
+#  ansible g1 -m git -a "dest=/var/www/html repo=https://github/com/ravi2krishna/ecomm.git" -b
+
+---
+- name: Update node1 server
+  hosts: node1
+  become: yes
+
+  tasks:
+    - name: Install GIT
+      yum:
+        name: git
+        state: present
+
+    - name: Deploy Site
+      git:
+        dest: /var/www/html
+        repo: https://github.com/ravi2krishna/ecomm.git
+
+...
