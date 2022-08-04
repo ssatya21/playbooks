@@ -1,0 +1,25 @@
+#  ansible all -m yum -a "name=httpd state=present" -b
+#  ansible all -m service -a "name=httpd state=started" -b
+#  ansible all -m service -a "name=httpd enabled=yes" -b
+
+---
+- name: Update node1 server
+  hosts: node1
+  become: yes
+
+  tasks:
+    - name: Install HTTPD
+      yum:
+        name: httpd
+        state: present
+
+    - name: Start HTTPD
+      service:
+        name: httpd
+        state: started
+
+    - name: Enable HTTPD
+      service:
+        name: httpd
+        enabled: yes
+...
