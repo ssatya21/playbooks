@@ -1,0 +1,12 @@
+#  ansible n1 -m file -a "path=/home/centos/n1_dir state=directory"
+# Single Play - Single Task
+---
+- name: Update n1 server
+  hosts: node1
+
+  tasks:
+  - name: Ensure Directory present
+    file:
+      path: /home/centos/n1_dir
+      state: directory
+...
