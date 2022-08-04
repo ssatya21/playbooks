@@ -1,0 +1,12 @@
+---
+- name: Update node1 server
+  hosts: node1
+  become: yes
+
+  tasks:
+    - name: Copy Static File
+      copy:
+        src: static.html
+        dest: /var/www/html
+
+...
