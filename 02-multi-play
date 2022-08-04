@@ -1,0 +1,29 @@
+#  ansible n1 -m get_url -a "dest=/home/centos/ url=https://filesamples.com/samples/document/txt/sample3.txt"
+#  Multi Play - Multiple Task
+---
+- name: Update group1 server
+  hosts: group1
+
+  tasks:
+  - name: Ensure Directory present
+    file:
+      path: /home/centos/web
+      state: directory
+  - name: Ensure Downloads are done
+    get_url:
+      dest: /home/centos/web
+      url: https://filesamples.com/samples/document/txt/sample3.txt
+
+- name: Update group2 servers
+  hosts: group2
+
+  tasks:
+  - name: Ensure Directory present
+    file:
+      path: /home/centos/app
+      state: directory
+  - name: Ensure Directory present
+    file:
+      path: /home/centos/db
+      state: directory
+...
