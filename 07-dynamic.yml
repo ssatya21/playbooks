@@ -1,0 +1,12 @@
+---
+- name: Update node1 server
+  hosts: node1
+  become: yes
+
+  tasks:
+    - name: Copy Dynamic File
+      template:
+        src: dynamic.j2
+        dest: /var/www/html/dynamic.html
+
+...
